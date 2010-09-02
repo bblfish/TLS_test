@@ -67,7 +67,10 @@ import org.jsslutils.sslcontext.X509TrustManagerWrapper;
 //import org.mortbay.jetty.servlet.ServletHandler;
 
 /**
- * A very simple
+ * A very simple server that listens securely (TLS) on port 8443, and generates a web page
+ * with which the user can from his browser invalidate the TLS Session and specify what
+ * error message the server should send at the next SSL Connection. Error messages are sent
+ * by throwing an exception.  
  *
  * @author Henry Story
  */
@@ -114,6 +117,10 @@ public class SSLTestServer extends AbstractHandler {
 		}
 		PrintWriter w = response.getWriter();
 		w.println("<html><head></head><body><h1>Test SSL - page " + counter++ + "</h1>\n"
+				  + "<p>This service allows you to  invalidate the TLS Session and specify what error message the server should "
+				  + " send at the next SSL Connection. "
+				  + " Error messages are sent  by throwing an exception.  Note that it will require 1 connection to send the "
+				  + " message to close down the session and another connection to allow server to close it.</p>"
 				  + "<p> SSL Session ID is: " + sslsession + "</p>\n"
 				  + "<p> received certificate with DN="+dn+"</p>"
 				  + "<p>action=" + type + " and reset="+reset+"</p>\n"
