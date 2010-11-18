@@ -19,3 +19,15 @@ that will be sent for the next session.  There are a number of java exceptions
 to select from, to see if that makes any difference.
 
 If there are any other tricks one should try please let me know.
+
+Wireshark
+---------
+
+If you want to see what is going on the wire you can use wireshark
+follow the HOWTO at http://wiki.wireshark.org/SSL
+You can use the following 
+
+0.0.0.0,8443,http,$TLS_TEST_HOME/src/main/resources/localhost.p12,secret
+
+(of course you must replace $TLS_TEST_HOME with the full path to the
+directory continaing this file)
