@@ -76,7 +76,7 @@ import org.jsslutils.sslcontext.X509TrustManagerWrapper;
  */
 public class SSLTestServer extends AbstractHandler {
 
-	static String keyStorePassword = "testtest";
+	static String keyStorePassword = "secret";
 	static int counter = 0;
 	static SSLContext sslContext;
 	String sslsession;
@@ -152,9 +152,9 @@ public class SSLTestServer extends AbstractHandler {
 		trustMgr.setServlet(sslTestServer);
 
 		//initialisation
-		final KeyStore keystore = KeyStore.getInstance("PKCS12");
+		final KeyStore keystore = KeyStore.getInstance("JKS");
 
-		InputStream ksInputStream = SSLTestServer.class.getResourceAsStream("/localhost.p12");
+		InputStream ksInputStream = SSLTestServer.class.getResourceAsStream("/localhost.jks");
 		keystore.load(ksInputStream, keyStorePassword.toCharArray());
 		ksInputStream.close();
 
