@@ -35,6 +35,11 @@ public class HelloWorldResource extends ServerResource {
 
    @Get
    public String toString() {
+	   String answer =  "hello, world." +
+		     "Just enter a URL that contains the string 'reneg' into your browser. When we see that we will renegotate \r\n" +
+			   "the TLS connection which should result in you being asked for a certificate and your browser sending one \r\n" +
+			   "which should then be displayed here. You need to have one or more client certificates" +
+			   "\r\nin your browser for this to make sense of course.\r\n";
 	   final Request request = getRequest();
 	   if (request instanceof HttpsInboundRequest) {
 		   HttpsInboundRequest httpsReq = (HttpsInboundRequest)request;
@@ -42,14 +47,14 @@ public class HelloWorldResource extends ServerResource {
 		   try {
 			   chain = httpsReq.getConnection().getSslEngine().getSession().getPeerCertificateChain();
 			   if (chain != null && chain.length > 0) {
-				   return chain[0].toString();
+				   return answer+"\r\n\r\n"+chain[0].toString();
 			   }
 		   } catch (SSLPeerUnverifiedException e) {
-			   return "We could not authenticate you. \r\n" +
+			   return answer+"\r\n\r\nWe could not authenticate you. \r\n" +
 					   "Trying to access your certificate we caught the following exception\r\n"+e.toString();
 		   }
 	   }
-      return "hello, world";
+      return answer;
    }
 
 }
