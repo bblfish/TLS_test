@@ -18,6 +18,12 @@ send a security exception the next time it needs to verify the X509Certificate
 that will be sent for the next session.  There are a number of java exceptions
 to select from, to see if that makes any difference.
 
+In order to enable debugging set the following environmental variable
+
+$ export MAVEN_OPTS="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+
+before running mvn .
+
 If there are any other tricks one should try please let me know.
 
 Wireshark

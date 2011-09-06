@@ -1,7 +1,7 @@
-This project is to allow exploration of TLS session renegotiation in Java.
+This project is here to help test browsers reactions to session renegotiation as well as to test the building of such a library. Session renegotation allows servers behind https to request client certificates only for certain parts of the URL space. This is important if web sites are going to be 100% behind https, as otherwise users get asked for a certificate before they can even reach the web site.
 
-It is worth looking at the code to understand what is going on - and the code
-should be cleaned up to make that easier. 
+It is worth looking at the code to understand what is going on - and the code should be cleaned up to make that easier. 
+This code is built using the RESTlet library at http://restlet.org/
 
 Run it using maven with
 
