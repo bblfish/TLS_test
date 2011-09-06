@@ -1,33 +1,11 @@
-This project is here to help test browsers reactions to changing
-sessions and throwing SSL Exceptions.
+This project contains a couple of demo servers whose aim is to help test TLS behavior.
+The projects are:
 
-It is worth looking at the code to understand what is going on - and the code
-should be cleaned up to make that easier. 
+session_breaking:
 
-Run it using maven with
+    This is a very simple jetty based server to explore how browsers react to session breaking. Do they offer the user to choose a new certificate? Do they react in particular ways to the exceptions sent when the session is broken? It turns out that they don't, but try it out yourself. (Safari did react differently up to a point)
 
-$ mvn -e clean compile exec:java
+session_renegotiation:
 
-Or of course if nothing has changed and all is compiled 
-
-$ mvn exec:java
-
-You should then be able to point your browser to http://localhost:8443/
-and reset the session using the online form, and ask the server to 
-send a security exception the next time it needs to verify the X509Certificate
-that will be sent for the next session.  There are a number of java exceptions
-to select from, to see if that makes any difference.
-
-If there are any other tricks one should try please let me know.
-
-Wireshark
----------
-
-If you want to see what is going on the wire you can use wireshark
-follow the HOWTO at http://wiki.wireshark.org/SSL
-You can use the following 
-
-0.0.0.0,8443,http,$TLS_TEST_HOME/src/main/resources/localhost.p12,secret
-
-(of course you must replace $TLS_TEST_HOME with the full path to the
-directory continaing this file)
+    This is a very simple RESTlet based server that is designed to see how browsers react to session renegotation, and also to see how what one needs to write to get this going. 
+    Session renegotation is very important if we are going to have 100% ssl servers and not have to request the certificate from a client.
