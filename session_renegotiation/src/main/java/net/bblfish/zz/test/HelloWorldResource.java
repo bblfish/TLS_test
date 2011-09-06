@@ -45,7 +45,8 @@ public class HelloWorldResource extends ServerResource {
 				   return chain[0].toString();
 			   }
 		   } catch (SSLPeerUnverifiedException e) {
-			   e.printStackTrace();
+			   return "We could not authenticate you. \r\n" +
+					   "Trying to access your certificate we caught the following exception\r\n"+e.toString();
 		   }
 	   }
       return "hello, world";
