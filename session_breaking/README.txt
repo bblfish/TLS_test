@@ -12,7 +12,7 @@ Or of course if nothing has changed and all is compiled
 
 $ mvn exec:java
 
-You should then be able to point your browser to http://localhost:8443/
+You should then be able to point your browser to https://localhost:8443/
 and reset the session using the online form, and ask the server to 
 send a security exception the next time it needs to verify the X509Certificate
 that will be sent for the next session.  There are a number of java exceptions
